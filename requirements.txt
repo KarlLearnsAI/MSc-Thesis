@@ -14,7 +14,7 @@ wandb==0.13.7
 h5py==3.7.0
 cmake==3.14.4
 gym==0.22.0
-open3d==0.11.2
+# open3d==0.11.2
 grad-cam==1.4.6
 networkx==2.8.8
 mpl_point_clicker==0.3.1
