@@ -9,6 +9,7 @@ Run OpenSeeD from VLMaps.
 """
 
 import subprocess, tempfile, numpy as np, os
+from openseed_dump_pixels import pixel_features_from_array
 from pathlib import Path
 import argparse
 
@@ -18,6 +19,8 @@ OPENSEED_PY  = "/home/jovyan/teaching_material/msc/OpenSeeD/tools/openseed_dump_
 DEFAULT_CFG  = "/home/jovyan/teaching_material/msc/OpenSeeD/configs/openseed/openseed_swinl_lang_decouple.yaml"
 DEFAULT_WGT  = "/home/jovyan/teaching_material/msc/OpenSeeD/weights/openseed_swinl_pano_sota.pt"
 # ----------------------------------------------------------------------
+
+
 
 def _run_openseed(img:str, cfg:str, wgt:str) -> Path:
     """spawn the extractor, return path to the tmp .npy file"""
@@ -43,6 +46,8 @@ def openseed_pixels(image_path:str, cfg:str=None, weight:str=None) -> np.ndarray
     npy = _run_openseed(image_path, cfg, weight)
     return np.load(npy)
 
+def openseed_pixels_in_memory(model, rgb_array, long_edge=512):
+    return pixel_features_from_array(model, rgb_array, long_edge)
 
 # --------------------------- CLI section ---------------------------------
 if __name__ == "__main__":
