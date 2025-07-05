@@ -1,7 +1,7 @@
 # MSc-thesis/tools/call_openseed_text.py
 #!/usr/bin/env python
 """
-Return 256-D ℓ2-normalised text embeddings from OpenSeeD
+Return 512-D ℓ2-normalised text embeddings from OpenSeeD
 by spawning the openseed6 conda env.
 
 usage from VLMaps code:
@@ -28,4 +28,4 @@ def _run(labels, cfg, wgt):
 
 def openseed_text(labels, cfg: str = CFG, weight: str = WGT):
     labels = [s.strip() for s in labels]
-    return _run(labels, cfg, weight)              # (K,256)
+    return _run(labels, cfg, weight) # (K,512)
